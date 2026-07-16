@@ -1,70 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Privacy Policy</title><style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#1f2937;line-height:1.65}
-header{background:linear-gradient(135deg,#06245f,#0b3c82);color:#fff;padding:55px 20px;text-align:center}
-header h1{margin:0 0 12px;font-size:36px}header p{margin:0;font-size:17px}
-nav{background:#fff;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-nav a{margin:0 12px;color:#0b3c82;text-decoration:none;font-weight:bold}nav a:hover{text-decoration:underline}
-.container{max-width:950px;margin:30px auto;padding:0 18px}.card{background:#fff;padding:25px;margin-bottom:22px;border-radius:10px;box-shadow:0 3px 14px rgba(0,0,0,.08)}
-h2{color:#0b3c82;margin-top:0}ul,ol{padding-left:22px}.highlight{background:#eaf2ff;border-left:5px solid #1267d6;padding:15px;border-radius:5px;margin:14px 0}
-.success{background:#ecf8f0;border-left:5px solid #218c4f;padding:15px;border-radius:5px;margin:14px 0}
-code{background:#eef3f8;padding:2px 6px;border-radius:4px}.updated{color:#64748b;font-size:14px}
-footer{background:#06245f;color:#fff;text-align:center;padding:20px;margin-top:35px;font-size:14px}footer a{color:#fff}
-@media(max-width:600px){header h1{font-size:28px}nav a{display:inline-block;margin:6px 8px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Privacy Policy - GST & E-Way Login Tool</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #06245f, #0b3c82);
+      color: white;
+      padding: 42px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+    }
+
+    nav {
+      background: white;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #0b3c82;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 10px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #0b3c82;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    .notice {
+      background: #eaf2ff;
+      border-left: 5px solid #1267d6;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #06245f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 35px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header><h1>Privacy Policy</h1><p>Samriddhi Gmail Sender</p></header>
-<nav>
-<a href="../index.html">Main Website</a>
-<a href="index.html">Gmail Sender Home</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Service</a>
-</nav>
-<main class="container">
-<section class="card"><p class="updated"><strong>Last updated:</strong> 16 July 2026</p>
-<p>This Privacy Policy explains how Samriddhi Associates handles information when a user uses Samriddhi Gmail Sender.</p></section>
 
-<section class="card"><h2>1. Information Used</h2><ul>
-<li>The Gmail address entered by the user</li><li>Google OAuth tokens issued after consent</li>
-<li>Recipient names, email addresses, subjects and messages in the local Excel file</li>
-<li>Files selected as attachments</li><li>Local sending status such as Pending, Sent or Failed</li></ul></section>
+  <header>
+    <h1>Privacy Policy</h1>
+    <p>GST & E-Way Login Tool</p>
+  </header>
 
-<section class="card"><h2>2. Google User Data and Permission</h2>
-<p>The application requests <code>https://www.googleapis.com/auth/gmail.send</code> only to send emails prepared and initiated by the user.</p>
-<p>It does not request permission to read Gmail inbox messages or contacts, delete or modify existing messages, or access Google Drive or Google Sheets.</p></section>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
 
-<section class="card"><h2>3. Purpose of Use</h2><ul>
-<li>Connect the authorised Gmail account</li><li>Create personalised email content from the local Excel file</li>
-<li>Attach user-selected files</li><li>Send email after the user initiates sending</li>
-<li>Record sending status locally</li><li>Reconnect the authorised account later</li></ul></section>
+  <main class="container">
 
-<section class="card"><h2>4. Storage and Retention</h2>
-<p>The Gmail address, OAuth token and Excel data are stored locally on the user's computer. The application does not upload this information to a Samriddhi Associates server.</p>
-<p>Local authorization information remains until the user disconnects the account, deletes local application data, or revokes access through Google Account settings.</p></section>
+    <section class="card">
+      <h2>Introduction</h2>
 
-<section class="card"><h2>5. Sharing and Transfer</h2>
-<p>Samriddhi Associates does not sell Google user data or use it for advertising. Data is not shared with unrelated third parties.</p>
-<p>Information is transmitted to Google only as necessary to authenticate the user and send the email requested by the user. Message content and attachments are delivered through Gmail to recipients selected by the user.</p></section>
+      <p>
+        This Privacy Policy explains how the GST & E-Way Login Tool Chrome
+        extension accesses, uses and stores information while providing its
+        services.
+      </p>
 
-<section class="card"><h2>6. Google API Limited Use</h2>
-<div class="highlight">Use of information received from Google APIs complies with the Google API Services User Data Policy, including its Limited Use requirements.</div></section>
+      <p>
+        The extension is developed and supported by Samriddhi Associates.
+      </p>
+    </section>
 
-<section class="card"><h2>7. Security</h2>
-<p>The application uses Google OAuth so the user does not provide a Gmail password to the software. Users should protect their Windows account, local Excel file and computer.</p></section>
+    <section class="card">
+      <h2>Information Accessed</h2>
 
-<section class="card"><h2>8. User Controls and Deletion</h2><ul>
-<li>Use Disconnect or Change Account in the application</li><li>Revoke access in Google Account security settings</li>
-<li>Delete the local Excel file and application data</li><li>Contact Samriddhi Associates for assistance</li></ul></section>
+      <p>The extension may access the following information:</p>
 
-<section class="card"><h2>9. Children's Privacy</h2><p>The application is intended for business and professional users and is not directed to children.</p></section>
-<section class="card"><h2>10. Policy Changes</h2><p>This policy may be updated when functionality, law or Google API requirements change. The latest version will be published here.</p></section>
-<section class="card"><h2>11. Contact</h2><p><strong>Samriddhi Associates</strong><br>Phone: +91-98299-27177</p></section>
-</main>
-<footer>Developed by Samriddhi Associates |
-<a href="privacy.html">Privacy Policy</a> |
-<a href="terms.html">Terms of Service</a></footer>
-</body></html>
+      <ul>
+        <li>Google account email address used for authorization</li>
+        <li>License key and license status</li>
+        <li>Firm names and login credential records stored in the user's Google Sheet</li>
+        <li>Selected Google Spreadsheet identification details</li>
+        <li>Last synchronization date, cached records and technical error messages</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Google Sheets Access</h2>
+
+      <div class="notice">
+        The extension requests read-only access to Google Sheets.
+      </div>
+
+      <p>
+        This permission is used only to read records from the Google
+        Spreadsheet authorized and opened by the user.
+      </p>
+
+      <p>
+        The extension does not create, modify or delete Google Sheet data.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>How Information Is Used</h2>
+
+      <p>Information is used only for the following purposes:</p>
+
+      <ul>
+        <li>Validating the user's license</li>
+        <li>Confirming the authorized Google account</li>
+        <li>Loading firm records from Google Sheets</li>
+        <li>Searching client or firm records</li>
+        <li>Autofilling GST Portal and E-Way Bill Portal login fields</li>
+        <li>Maintaining basic synchronization and error status</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Local Data Storage</h2>
+
+      <p>
+        Some information, including license details, selected spreadsheet
+        details, cached firm records and synchronization information, may be
+        stored locally in the user's Chrome browser.
+      </p>
+
+      <p>
+        This local storage helps the extension load records faster and continue
+        displaying previously synchronized information when appropriate.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Data Sharing</h2>
+
+      <p>
+        We do not sell, rent or use user data for advertising.
+      </p>
+
+      <p>
+        Data is not shared with unrelated third parties. Limited information
+        may be sent to the license validation service only for license and
+        authorized account verification.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Data Security</h2>
+
+      <p>
+        Reasonable technical measures are used to protect extension data.
+        However, users are responsible for maintaining the security of their
+        Google account, Chrome profile, computer and Google Sheet.
+      </p>
+
+      <p>
+        Users should not share their license key, Google account credentials or
+        spreadsheet access with unauthorized persons.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>User Control and Data Removal</h2>
+
+      <p>Users may:</p>
+
+      <ul>
+        <li>Disconnect their Google account from the extension</li>
+        <li>Remove local activation data</li>
+        <li>Uninstall the extension to remove locally stored extension data</li>
+        <li>Revoke Google account access from their Google Account settings</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Third-Party Services</h2>
+
+      <p>
+        The extension interacts with Google Sheets, the GST Portal and the
+        E-Way Bill Portal. Use of these services is also governed by their
+        respective terms and privacy policies.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Changes to This Privacy Policy</h2>
+
+      <p>
+        This Privacy Policy may be updated when the extension's functionality,
+        permissions or data practices change. The latest version will be
+        published on this page.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+
+      <p>
+        For privacy-related questions or support, contact:
+      </p>
+
+      <p>
+        <strong>Samriddhi Associates</strong><br>
+        Phone: +91-98299-27177
+      </p>
+
+      <p>
+        Last updated: 15 July 2026
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    Developed by Samriddhi Associates |
+    <a href="index.html">Home</a> |
+    <a href="terms.html">Terms of Service</a>
+  </footer>
+
+</body>
+</html>
