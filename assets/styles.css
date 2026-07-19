@@ -33,3 +33,11 @@
 .form-status.sending{background:#eef5ff;color:#18568f;border:1px solid #b8d2ed}
 .contact-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .contact-submit-frame{display:none;width:0;height:0;border:0}
+
+/* Five-product homepage grid */
+.product-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.product-grid .product-card{grid-column:span 2}
+.product-grid .product-card:nth-last-child(2){grid-column:2/span 2}
+.product-grid .product-card:last-child{grid-column:4/span 2}
+@media(max-width:900px){.product-grid{grid-template-columns:1fr}.product-grid .product-card,.product-grid .product-card:nth-last-child(2),.product-grid .product-card:last-child{grid-column:auto}}
+#products{scroll-margin-top:84px}

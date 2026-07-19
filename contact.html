@@ -1,90 +1,65 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='description' content='Support contact for Samriddhi Associates.'><title>Contact | Samriddhi Associates</title><link rel='icon' href='assets/logo.svg'><link rel='stylesheet' href='assets/styles.css'><script src='assets/app.js' defer></script><script src='assets/contact-config.js' defer></script><script src='assets/contact-form.js' defer></script></head><body><header class='site-header'><div class='nav-wrap'><a class='brand' href='index.html'><img src='assets/logo.svg' alt='Samriddhi Associates logo'><span>Samriddhi Associates</span></a><button class='nav-toggle' aria-label='Menu'>☰</button><nav class='nav-links'><a class='' href='index.html'>Home</a><a class='' href='gst-tool/index.html'>GST & E-Way Tool</a><a class='' href='gmail-sender/index.html'>Gmail Sender</a><a class='' href='gst-return-downloader/index.html'>GST Return Downloader</a><a class='active' href='contact.html'>Contact</a></nav></div></header><section class='page-hero'><div class='container'><h1>Contact & Support</h1><p>Installation, licensing, authorization and software usage assistance.</p></div></section>
-<section class='section'>
-  <div class='container content'>
-    <div class='grid grid-2'>
-      <div class='card'>
-        <h2>Samriddhi Associates</h2>
-        <p>
-          8, Basement Floor, Okay Plus Complex,<br>
-          Near Bus Stand, Kishangarh,<br>
-          Ajmer - 305801<br>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Support contact for Samriddhi Associates." name="description"/><title>Contact | Samriddhi Associates</title><link href="assets/logo.svg" rel="icon"/><link href="assets/styles.css" rel="stylesheet"/><script defer src="assets/app.js"></script><script defer src="assets/contact-config.js"></script><script defer src="assets/contact-form.js"></script><script defer src="assets/visitor-config.js"></script><script defer src="assets/visitor-counter.js"></script></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img alt="Samriddhi Associates logo" src="assets/logo.svg"/><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#products">Products</a><a class="active" href="contact.html">Contact Us</a></nav></div></header><section class="page-hero"><div class="container"><h1>Contact &amp; Support</h1><p>Installation, licensing, authorization and software usage assistance.</p></div></section>
+<section class="section">
+<div class="container content">
+<div class="grid grid-2">
+<div class="card">
+<h2>Samriddhi Associates</h2>
+<p>
+          8, Basement Floor, Okay Plus Complex,<br/>
+          Near Bus Stand, Kishangarh,<br/>
+          Ajmer - 305801<br/>
           Cell : +91-98299-27177
         </p>
-        <p>Support is available for authorised customers.</p>
-
-        <h3>Before contacting support</h3>
-        <ul class='check'>
-          <li>Keep the product name ready</li>
-          <li>Note the exact error</li>
-          <li>Keep a screenshot available</li>
-          <li>Never share a Gmail password</li>
-        </ul>
-      </div>
-
-      <div class='card contact-form-card'>
-        <span class='badge'>Visitor Contact Form</span>
-        <h2>Send Us a Message</h2>
-        <p class='form-intro'>
+<p>Support is available for authorised customers.</p>
+<h3>Before contacting support</h3>
+<ul class="check">
+<li>Keep the product name ready</li>
+<li>Note the exact error</li>
+<li>Keep a screenshot available</li>
+<li>Never share a Gmail password</li>
+</ul>
+</div>
+<div class="card contact-form-card">
+<span class="badge">Visitor Contact Form</span>
+<h2>Send Us a Message</h2>
+<p class="form-intro">
           Enter your details below. The enquiry will be stored in the
           Samriddhi Associates contact Google Sheet for support follow-up.
         </p>
-
-        <form
-          id='visitorContactForm'
-          class='visitor-contact-form'
-          method='post'
-          target='contactSubmitFrame'
-          autocomplete='on'
-        >
-          <div class='form-group'>
-            <label for='visitorName'>Visitor Name <span>*</span></label>
-            <input id='visitorName' name='name' type='text' maxlength='100'
-              placeholder='Enter visitor name' autocomplete='name' required>
-          </div>
-
-          <div class='form-group'>
-            <label for='visitorMobile'>Mobile <span>*</span></label>
-            <input id='visitorMobile' name='mobile' type='tel' maxlength='16'
-              placeholder='+91XXXXXXXXXX' autocomplete='tel' inputmode='tel' required>
-          </div>
-
-          <div class='form-group'>
-            <label for='visitorEmail'>Email <span>*</span></label>
-            <input id='visitorEmail' name='email' type='email' maxlength='150'
-              placeholder='name@example.com' autocomplete='email' required>
-          </div>
-
-          <div class='form-group'>
-            <label for='visitorMessage'>Custom Message <span>*</span></label>
-            <textarea id='visitorMessage' name='customMessage' rows='6'
-              maxlength='2000' placeholder='Write your enquiry or support message'
-              required></textarea>
-          </div>
-
-          <div class='contact-honeypot' aria-hidden='true'>
-            <label for='visitorWebsite'>Website</label>
-            <input id='visitorWebsite' name='website' type='text'
-              tabindex='-1' autocomplete='off'>
-          </div>
-
-          <button id='contactSubmitButton'
-            class='btn btn-blue form-submit-button' type='submit'>
+<form autocomplete="on" class="visitor-contact-form" id="visitorContactForm" method="post" target="contactSubmitFrame">
+<div class="form-group">
+<label for="visitorName">Visitor Name <span>*</span></label>
+<input autocomplete="name" id="visitorName" maxlength="100" name="name" placeholder="Enter visitor name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="visitorMobile">Mobile <span>*</span></label>
+<input autocomplete="tel" id="visitorMobile" inputmode="tel" maxlength="16" name="mobile" placeholder="+91XXXXXXXXXX" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="visitorEmail">Email <span>*</span></label>
+<input autocomplete="email" id="visitorEmail" maxlength="150" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="visitorMessage">Custom Message <span>*</span></label>
+<textarea id="visitorMessage" maxlength="2000" name="customMessage" placeholder="Write your enquiry or support message" required="" rows="6"></textarea>
+</div>
+<div aria-hidden="true" class="contact-honeypot">
+<label for="visitorWebsite">Website</label>
+<input autocomplete="off" id="visitorWebsite" name="website" tabindex="-1" type="text"/>
+</div>
+<button class="btn btn-blue form-submit-button" id="contactSubmitButton" type="submit">
             OK — Send Message
           </button>
-
-          <p id='contactFormStatus' class='form-status'
-            role='status' aria-live='polite' hidden></p>
-        </form>
-
-        <iframe id='contactSubmitFrame' name='contactSubmitFrame'
-          title='Contact form submission' class='contact-submit-frame'></iframe>
-      </div>
-    </div>
-
-    <div class='notice warning'>
-      <strong>Security:</strong> Never enter Gmail passwords, OTPs or GST
+<p aria-live="polite" class="form-status" hidden="" id="contactFormStatus" role="status"></p>
+</form>
+<iframe class="contact-submit-frame" id="contactSubmitFrame" name="contactSubmitFrame" title="Contact form submission"></iframe>
+</div>
+</div>
+<div class="notice warning">
+<strong>Security:</strong> Never enter Gmail passwords, OTPs or GST
       credentials in this contact form.
     </div>
-  </div>
+</div>
 </section>
-<footer class='site-footer'><div class='footer-grid'><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br><strong>Samriddhi Associates</strong><br>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href='gst-tool/index.html'>GST & E-Way Login Tool</a><a href='gmail-sender/index.html'>Samriddhi Gmail Sender</a><a href='gst-return-downloader/index.html'>GST Return Downloader</a></div><div><h3>Legal</h3><a href='privacy.html'>Website Privacy</a><a href='terms.html'>Website Terms</a><a href='contact.html'>Contact</a></div></div><div class='footer-bottom'>Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>
+<footer class="site-footer"><div class="footer-grid"><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br/><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href="gst-tool/index.html">GST &amp; E-Way Login Tool</a><a href="gmail-sender/index.html">Samriddhi Gmail Sender</a><a href="gst-return-downloader/index.html">GST Return Downloader</a><a href="gstr-2b-reconciliation/index.html">GSTR-2B Reconciliation</a><a href="bank-statement-to-tally/index.html">Bank Statement to Tally</a></div><div><h3>Legal</h3><a href="privacy.html">Website Privacy</a><a href="terms.html">Website Terms</a><a href="contact.html">Contact</a></div></div><div class="footer-bottom">Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>

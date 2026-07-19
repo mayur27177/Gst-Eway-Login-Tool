@@ -1,3 +1,38 @@
-<!DOCTYPE html>
+SAMRIDDHI WEBSITE CONTACT FORM SETUP
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Official GST and E-Way Login Tool page." name="description"/><title>GST &amp; E-Way Login Tool | Samriddhi Associates</title><link href="../assets/logo.svg" rel="icon"/><link href="../assets/styles.css" rel="stylesheet"/><script defer src="../assets/app.js"></script><script defer src="../assets/visitor-config.js"></script><script defer src="../assets/visitor-counter.js"></script></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="../index.html"><img alt="Samriddhi Associates logo" src="../assets/logo.svg"/><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="../index.html">Home</a><a class="active" href="../index.html#products">Products</a><a href="../contact.html">Contact Us</a></nav></div></header><section class="page-hero"><div class="container"><span class="eyebrow">Chrome Extension</span><h1>GST &amp; E-Way Login Tool</h1><p>Login assistance for authorised users using records imported from a local Excel file.</p></div></section><section class="section"><div class="container"><div class="grid grid-2"><div class="card"><h2>Main functions</h2><ul class="check"><li>Search authorised client records</li><li>GST Portal login field assistance</li><li>E-Way Bill login field assistance</li><li>Licensed access controls</li></ul></div><div class="card"><h2>Local Excel privacy</h2><div class="notice">No Google Sheets, Google Drive or Google Sign-In permission is requested.</div><p>The user selects an Excel file from the device. Imported GST and E-Way Bill records remain in Chrome extension storage and are not uploaded to the licence server.</p></div></div></div></section><section class="section alt"><div class="container"><div class="section-head"><h2>How it works</h2></div><div class="steps"><div class="step"><strong>Import Excel</strong><br/>Select the authorised local Excel file.</div><div class="step"><strong>Search client</strong><br/>Search firm name, GSTIN or user ID.</div><div class="step"><strong>Select record</strong><br/>Choose the intended account.</div><div class="step"><strong>Fill fields</strong><br/>Assist with the selected portal login.</div></div></div></section><section class="section"><div class="container"><div class="grid grid-2"><div class="card"><h2>Privacy</h2><a class="btn btn-blue" href="privacy.html">Read Privacy Policy</a></div><div class="card"><h2>Terms</h2><a class="btn btn-outline" href="terms.html">Read Terms</a></div></div></div></section><footer class="site-footer"><div class="footer-grid"><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br/><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href="../gst-tool/index.html">GST &amp; E-Way Login Tool</a><a href="../gmail-sender/index.html">Samriddhi Gmail Sender</a><a href="../gst-return-downloader/index.html">GST Return Downloader</a></div><div><h3>Legal</h3><a href="../privacy.html">Website Privacy</a><a href="../terms.html">Website Terms</a><a href="../contact.html">Contact</a></div></div><div class="footer-bottom">Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>
+Google Sheet columns:
+Name | Mobile | Email | Custom Message
+
+1. Create a new blank Google Sheet.
+2. Rename it: Samriddhi Website Contact Enquiries
+3. Open Extensions > Apps Script.
+4. Delete the existing Code.gs content.
+5. Copy the complete code from Google_Apps_Script_Contact_Form.gs.
+6. Save the Apps Script project.
+7. Select setupContactSheet and click Run.
+8. Approve Google permissions.
+9. The Contact Enquiries tab will be created with:
+   Name | Mobile | Email | Custom Message
+
+WEB APP DEPLOYMENT
+1. Deploy > New deployment.
+2. Select type: Web app.
+3. Execute as: Me.
+4. Who has access: Anyone.
+5. Deploy and copy the URL ending in /exec.
+
+WEBSITE CONNECTION
+1. Open assets/contact-config.js.
+2. Replace:
+   PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE
+   with the complete /exec URL.
+3. Save the file.
+4. Upload the complete website to the GitHub main branch.
+5. Wait for GitHub Pages deployment.
+6. Test:
+   https://gstewaylogin.in/contact.html
+
+
+CURRENT STATUS
+Google Apps Script Web App URL has been inserted into assets/contact-config.js.
+The website contact form is ready for GitHub upload and testing.
