@@ -1,0 +1,11 @@
+SAFE WEBSITE PATCH
+
+Upload ONLY the contents of this folder to the GitHub repository root.
+This patch contains:
+1. index.html - original homepage with two new product cards
+2. sitemap.xml - two new product URLs
+3. tally-custom-report-builder folder
+4. debtor-creditor-analysis folder
+
+Do not upload gmail-sender/index.html to the repository root.
+Do not delete CNAME or assets.
