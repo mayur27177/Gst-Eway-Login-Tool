@@ -1,41 +1,28 @@
-SAMRIDDHI ASSOCIATES COMPLETE WEBSITE
-
-IMPORTANT: Upload the CONTENTS of this folder to the GitHub repository root. Do not upload the ZIP itself and do not upload the outer folder.
-
-Expected folders in GitHub root:
-assets
-gst-tool
-gmail-sender
-   gst-return-downloader
-
-Also upload root files including index.html, CNAME, privacy.html and terms.html.
-
-Recommended commit message:
-Replace website with complete Samriddhi design
-
-Test URLs:
-https://gstewaylogin.in/
-https://gstewaylogin.in/gst-tool/
-https://gstewaylogin.in/gmail-sender/
-
-Google Auth URLs - GST Tool:
-Homepage: https://gstewaylogin.in/gst-tool/
-Privacy: https://gstewaylogin.in/gst-tool/privacy.html
-Terms: https://gstewaylogin.in/gst-tool/terms.html
-
-Google Auth URLs - Gmail Sender:
-Homepage: https://gstewaylogin.in/gmail-sender/
-Privacy: https://gstewaylogin.in/gmail-sender/privacy.html
-Terms: https://gstewaylogin.in/gmail-sender/terms.html
-
-
-GST RETURN DOWNLOADER URLS
-
-Product:
-https://gstewaylogin.in/gst-return-downloader/
-
-Privacy:
-https://gstewaylogin.in/gst-return-downloader/privacy.html
-
-Terms:
-https://gstewaylogin.in/gst-return-downloader/terms.html
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+  <url><loc>https://gstewaylogin.in/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/contact.html</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/terms.html</loc></url>
+</urlset>

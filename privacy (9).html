@@ -1,7 +1,64 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='description' content='Official product page for GSTR-2B Reconciliation desktop software.'><title>GSTR-2B Reconciliation | Samriddhi Associates</title><link rel='icon' href='../assets/logo.svg'><link rel='stylesheet' href='../assets/styles.css'><script src='../assets/app.js' defer></script></head><body><header class='site-header'><div class='nav-wrap'><a class='brand' href='../index.html'><img src='../assets/logo.svg' alt='Samriddhi Associates logo'><span>Samriddhi Associates</span></a><button class='nav-toggle' aria-label='Menu'>☰</button><nav class='nav-links'><a href='../index.html'>Home</a><a href='../gst-tool/index.html'>GST &amp; E-Way Tool</a><a href='../gmail-sender/index.html'>Gmail Sender</a><a href='../gst-return-downloader/index.html'>GST Return Downloader</a><a href='../contact.html'>Contact</a></nav></div></header>
-<section class='page-hero'><div class='container'><span class='eyebrow'>Windows Desktop Application</span><h1>GSTR-2B Reconciliation</h1><p>Compare authorised Books or Tally purchase records with the GST Portal GSTR-2B Excel file and produce invoice-wise reconciliation reports.</p></div></section>
-<section class='section'><div class='container'><div class='grid grid-2'><div class='card'><h2>Main functions</h2><ul class='check'><li>Import Books or Tally purchase data</li><li>Import GST Portal GSTR-2B Excel data</li><li>Compare suppliers by GSTIN</li><li>Consolidate multiple tax-rate rows invoice-wise</li><li>Treat credit notes as negative ITC</li><li>Generate Matched, Only in GSTR-2B and Only in Books reports</li></ul></div><div class='card'><h2>Professional reconciliation workflow</h2><div class='notice warning'><strong>Important:</strong> The software must be used only with business and GST data that the user is authorised to process.</div><p>The application performs reconciliation according to the files and period selected by the user. The final report should be professionally reviewed before return filing, accounting adjustment or ITC action.</p></div></div></div></section>
-<section class='section alt'><div class='container'><div class='section-head'><h2>How it works</h2><p>A local workflow designed for monthly or multi-month reconciliation.</p></div><div class='steps'><div class='step'><strong>Select the Books or Tally data</strong><br>Choose the authorised purchase-data file or fetch the required period from a locally accessible Tally company where supported.</div><div class='step'><strong>Select the GSTR-2B Excel file</strong><br>Choose the file downloaded from the GST Portal for the relevant period.</div><div class='step'><strong>Run invoice-wise matching</strong><br>The application consolidates invoice rows and compares GSTIN, document number, date, taxable value and tax amounts according to the configured logic.</div><div class='step'><strong>Review and export</strong><br>Review matched and unmatched records, then save the reconciliation workbook in the selected output folder.</div></div></div></section>
-<section class='section'><div class='container'><div class='grid grid-3'><div class='card'><div class='icon'>📊</div><h3>Clear reports</h3><p>Separate worksheets make matched records and exceptions easier to review.</p></div><div class='card'><div class='icon'>🧮</div><h3>Invoice consolidation</h3><p>Multiple tax-rate rows belonging to one invoice can be consolidated before comparison.</p></div><div class='card'><div class='icon'>💻</div><h3>Local processing</h3><p>Business files and reconciliation output remain on the user's computer unless the user moves or shares them.</p></div></div></div></section>
-<section class='section alt'><div class='container'><div class='grid grid-2'><div class='card'><h2>Privacy and data handling</h2><p>Review how Books data, GSTR-2B data, output reports and licence information are handled.</p><a class='btn btn-blue' href='privacy.html'>Read Privacy Policy</a></div><div class='card'><h2>Terms of use</h2><p>Review authorised-use, professional-review and licensing responsibilities.</p><a class='btn btn-outline' href='terms.html'>Read Terms</a></div></div></div></section>
-<footer class='site-footer'><div class='footer-grid'><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br><strong>Samriddhi Associates</strong><br>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href='../gst-tool/index.html'>GST &amp; E-Way Login Tool</a><a href='../gmail-sender/index.html'>Samriddhi Gmail Sender</a><a href='../gst-return-downloader/index.html'>GST Return Downloader</a><a href='../gstr-2b-reconciliation/index.html'>GSTR-2B Reconciliation</a><a href='../bank-statement-to-tally/index.html'>Bank Statement to Tally</a></div><div><h3>Legal</h3><a href='../privacy.html'>Website Privacy</a><a href='../terms.html'>Website Terms</a><a href='../contact.html'>Contact</a></div></div><div class='footer-bottom'>Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>
+(() => {
+  "use strict";
+
+  const STORAGE_KEY = "samriddhi_visitor_counted_date_v1";
+  const SOURCE = "samriddhi-site";
+
+  function indiaDateKey() {
+    try {
+      const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Kolkata",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      return `${map.year}-${map.month}-${map.day}`;
+    } catch (_) {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }
+
+  function isLiveWebsite() {
+    const host = String(window.location.hostname || "").toLowerCase();
+    return host === "gstewaylogin.in" ||
+      host === "www.gstewaylogin.in" ||
+      host.endsWith(".github.io");
+  }
+
+  async function recordVisit() {
+    if (!isLiveWebsite()) return;
+
+    const endpoint = String(window.VISITOR_COUNT_WEB_APP_URL || "").trim();
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(endpoint)) return;
+
+    const today = indiaDateKey();
+    try {
+      if (window.localStorage.getItem(STORAGE_KEY) === today) return;
+      window.localStorage.setItem(STORAGE_KEY, today);
+    } catch (_) {
+      // Continue even if browser storage is unavailable.
+    }
+
+    const requestUrl = new URL(endpoint);
+    requestUrl.searchParams.set("action", "visit");
+    requestUrl.searchParams.set("source", SOURCE);
+
+    try {
+      await fetch(requestUrl.toString(), {
+        method: "GET",
+        mode: "no-cors",
+        cache: "no-store",
+        keepalive: true
+      });
+    } catch (_) {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", recordVisit, { once: true });
+  } else {
+    recordVisit();
+  }
+})();

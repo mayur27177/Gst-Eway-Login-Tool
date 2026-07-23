@@ -1,4 +1,1 @@
-/*
-Paste the deployed Google Apps Script Web App URL ending in /exec below.
-*/
-window.CONTACT_FORM_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGLtIXkWxPfMjocbL2Siel3s4dZPr2QjBpChMO-MCGU4LoX_ZrCYTtzva_k5cWXfaG/exec";
+document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');if(b&&n)b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',n.classList.contains('open'))}});
