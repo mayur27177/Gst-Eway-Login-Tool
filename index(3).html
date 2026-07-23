@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Software tools for GST login, return downloads, GSTR-2B reconciliation, bank statement posting to Tally and authorised Gmail sending." name="description"/>
+<title>Samriddhi Associates | GST, Tally &amp; Productivity Software</title>
+<link href="assets/logo.svg" rel="icon"/>
+<style>
+
+:root{--navy:#071b35;--navy2:#0d315d;--blue:#1e67b1;--gold:#f4b942;--green:#198754;--ink:#172033;--muted:#607087;--line:#d9e3ee;--bg:#f4f7fb;--white:#fff;--shadow:0 14px 38px rgba(7,27,53,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}a{color:var(--blue)}
+.site-header{position:sticky;top:0;z-index:20;background:rgba(7,27,53,.97);box-shadow:0 4px 20px rgba(0,0,0,.14)}.nav-wrap{max-width:1160px;margin:auto;min-height:72px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;font-weight:800}.brand img{width:42px;height:42px}.nav-links{display:flex;gap:5px}.nav-links a{color:#dce9f7;text-decoration:none;padding:10px 12px;border-radius:10px;font-weight:650;font-size:14px}.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.12);color:#fff}.nav-toggle{display:none;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;padding:7px 10px;font-size:20px}
+.hero{padding:86px 20px 78px;color:#fff;background:radial-gradient(circle at 85% 15%,rgba(244,185,66,.25),transparent 28%),linear-gradient(135deg,var(--navy),var(--navy2))}.hero-inner{max-width:1160px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:46px;align-items:center}.eyebrow{display:inline-block;padding:7px 12px;border:1px solid rgba(255,255,255,.26);border-radius:999px;background:rgba(255,255,255,.07);font-size:13px;font-weight:800}.hero h1{font-size:clamp(40px,6vw,68px);line-height:1.06;margin:18px 0}.hero p{font-size:19px;color:#d8e7f7;max-width:760px}.hero-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:27px;box-shadow:0 22px 55px rgba(0,0,0,.24)}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:11px;border:1px solid transparent}.btn-gold{background:var(--gold);color:#1b2230}.btn-light{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.08)}.btn-blue{background:var(--blue);color:#fff}.btn-outline{border-color:var(--line);background:#fff;color:var(--navy)}
+.section{padding:66px 20px}.section.alt{background:#edf3f9}.container{max-width:1160px;margin:auto}.section-head{text-align:center;max-width:790px;margin:0 auto 32px}.section-head h2{font-size:clamp(30px,4vw,45px);line-height:1.15;color:var(--navy);margin:0 0 12px}.section-head p{color:var(--muted);font-size:17px}.grid{display:grid;gap:23px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow)}.card h2,.card h3{color:var(--navy);margin-top:0}.product-card{border-left:5px solid var(--blue)}.icon{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:#eaf3ff;font-size:25px;margin-bottom:15px}.badge{display:inline-block;background:#eaf3ff;color:var(--blue);font-size:12px;font-weight:850;padding:5px 10px;border-radius:999px}.check{list-style:none;padding:0}.check li{padding-left:28px;position:relative;margin:10px 0}.check li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
+.page-hero{padding:62px 20px;color:#fff;background:linear-gradient(135deg,var(--navy),var(--navy2))}.page-hero .container{max-width:980px}.page-hero h1{font-size:clamp(35px,5vw,55px);line-height:1.1;margin:0 0 13px}.page-hero p{font-size:18px;color:#d8e7f7;max-width:820px}.content{max-width:980px;margin:auto}.policy{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px;margin-bottom:19px;box-shadow:0 8px 24px rgba(7,27,53,.06)}.policy h2{color:var(--navy);margin-top:0}.policy code{background:#edf3f9;padding:3px 6px;border-radius:5px;overflow-wrap:anywhere}.updated{color:var(--muted);font-size:14px}.notice{border-left:5px solid var(--blue);background:#eaf3ff;padding:16px 18px;border-radius:10px;margin:17px 0}.warning{border-color:var(--gold);background:#fff8e8}.steps{display:grid;gap:15px;counter-reset:s}.step{counter-increment:s;position:relative;padding:18px 20px 18px 68px;background:#fff;border:1px solid var(--line);border-radius:14px}.step:before{content:counter(s);position:absolute;left:18px;top:16px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--blue);font-weight:900}
+.contact{background:linear-gradient(135deg,var(--blue),var(--navy2));color:#fff;border-radius:22px;padding:34px}.contact h2{margin-top:0}.site-footer{background:var(--navy);color:#cbd9e8;padding:48px 20px 22px}.footer-grid{max-width:1160px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}.site-footer h3{color:#fff}.site-footer a{display:block;color:#cbd9e8;text-decoration:none;margin:8px 0}.footer-bottom{max-width:1160px;margin:28px auto 0;padding-top:19px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:14px}
+@media(max-width:900px){.hero-inner,.grid-2,.grid-3,.footer-grid{grid-template-columns:1fr}}@media(max-width:760px){.nav-toggle{display:block}.nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy);padding:14px 20px 20px;flex-direction:column}.nav-links.open{display:flex}.nav-links a{text-align:center}.section{padding:52px 17px}}
+
+/* Visitor contact form */
+.contact-form-card{border-top:5px solid var(--blue)}
+.form-intro{color:var(--muted);margin-bottom:22px}
+.visitor-contact-form{display:grid;gap:17px}
+.form-group{display:grid;gap:7px}
+.form-group label{font-weight:750;color:var(--navy)}
+.form-group label span{color:#c0392b}
+.form-group input,.form-group textarea{
+  width:100%;border:1px solid #cbd8e6;border-radius:11px;background:#fff;
+  color:var(--ink);padding:12px 13px;font:inherit;outline:none;
+  transition:border-color .2s,box-shadow .2s
+}
+.form-group textarea{resize:vertical;min-height:135px}
+.form-group input:focus,.form-group textarea:focus{
+  border-color:var(--blue);box-shadow:0 0 0 4px rgba(30,103,177,.12)
+}
+.form-submit-button{width:100%;cursor:pointer;font:inherit}
+.form-submit-button:disabled{opacity:.65;cursor:wait}
+.form-status{margin:0;padding:12px 14px;border-radius:10px;font-weight:650}
+.form-status.success{background:#eaf8ef;color:#176b39;border:1px solid #a9dfbd}
+.form-status.error{background:#fff0ef;color:#9d2f28;border:1px solid #efb9b5}
+.form-status.sending{background:#eef5ff;color:#18568f;border:1px solid #b8d2ed}
+.contact-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.contact-submit-frame{display:none;width:0;height:0;border:0}
+
+/* Five-product homepage grid */
+.product-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.product-grid .product-card{grid-column:span 2}
+.product-grid .product-card:nth-last-child(2){grid-column:2/span 2}
+.product-grid .product-card:last-child{grid-column:4/span 2}
+@media(max-width:900px){.product-grid{grid-template-columns:1fr}.product-grid .product-card,.product-grid .product-card:nth-last-child(2),.product-grid .product-card:last-child{grid-column:auto}}
+
+
+#products{scroll-margin-top:84px}
+</style>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');if(b&&n)b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',n.classList.contains('open'))}});
+</script>
+<script defer src="assets/visitor-config.js"></script><script defer src="assets/visitor-counter.js"></script></head>
+<body>
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img alt="Samriddhi Associates logo" src="assets/logo.svg"/><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a class="active" href="index.html">Home</a><a href="index.html#products">Products</a><a href="contact.html">Contact Us</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><div><span class="eyebrow">Business software by Samriddhi Associates</span><h1>Simple tools.<br/>Faster professional work.</h1><p>Secure productivity solutions for GST login assistance, GST return downloads, GSTR-2B reconciliation, bank statement posting to Tally and authorised Gmail sending.</p></div><div class="hero-box"><h3>Built for clarity and control</h3><ul><li>Local Excel and desktop workflows</li><li>Separate product policies</li><li>Licensed user and device controls</li><li>GST reconciliation and return automation</li><li>Local Tally integration</li><li>Support by Samriddhi Associates</li></ul></div></div></section>
+<section class="section" id="products"><div class="container"><div class="section-head"><h2>Our Software Products</h2><p>Purpose-built tools for GST professionals, accountants and authorised business users.</p></div><div class="grid product-grid">
+<article class="card product-card"><div class="icon">🔐</div><span class="badge">Chrome Extension</span><h2>GST &amp; E-Way Login Tool</h2><p>Import authorised records from a local Excel file and assist with GST or E-Way Bill portal login fields.</p><ul class="check"><li>GST login assistance</li><li>E-Way Bill assistance</li><li>Local Excel import</li><li>Licensed user controls</li></ul><div class="actions"><a class="btn btn-blue" href="gst-tool/index.html">View Product</a><a class="btn btn-outline" href="gst-tool/privacy.html">Privacy</a></div></article>
+<article class="card product-card"><div class="icon">✉️</div><span class="badge">Windows Desktop App</span><h2>Samriddhi Gmail Sender</h2><p>Send personalised emails with optional attachments from a Gmail account authorised by the user.</p><ul class="check"><li>Personalised greeting</li><li>Custom subject and message</li><li>Multiple attachments</li><li>Local status tracking</li></ul><div class="actions"><a class="btn btn-blue" href="gmail-sender/index.html">View Product</a><a class="btn btn-outline" href="gmail-sender/privacy.html">Privacy</a></div></article>
+<article class="card product-card"><div class="icon">📥</div><span class="badge">Windows Desktop App</span><h2>GST Return Downloader</h2><p>Automates authorised GSTR-1, GSTR-3B and GSTR-2B downloads for multiple clients and periods.</p><ul class="check"><li>Multiple GST return types</li><li>Multiple clients and periods</li><li>Local Excel input workflow</li><li>Licensed desktop access</li></ul><div class="actions"><a class="btn btn-blue" href="gst-return-downloader/index.html">View Product</a><a class="btn btn-outline" href="gst-return-downloader/privacy.html">Privacy</a></div></article>
+<article class="card product-card"><div class="icon">🧾</div><span class="badge">Windows Desktop App</span><h2>GSTR-2B Reconciliation</h2><p>Compare Books or Tally purchase data with the GST Portal GSTR-2B Excel file and generate a clear reconciliation report.</p><ul class="check"><li>Invoice-wise GSTIN matching</li><li>Multi-rate invoice consolidation</li><li>Credit-note adjustment</li><li>Matched and mismatch reports</li></ul><div class="actions"><a class="btn btn-blue" href="gstr-2b-reconciliation/index.html">View Product</a><a class="btn btn-outline" href="gstr-2b-reconciliation/privacy.html">Privacy</a></div></article>
+<article class="card product-card"><div class="icon">🏦</div><span class="badge">Windows Desktop App</span><h2>Bank Statement to Tally</h2><p>Import bank statement transactions, map the required ledgers and post authorised entries to a locally running Tally company.</p><ul class="check"><li>Bank transaction import</li><li>Searchable ledger mapping</li><li>Transaction review before posting</li><li>Local Tally connection</li></ul><div class="actions"><a class="btn btn-blue" href="bank-statement-to-tally/index.html">View Product</a><a class="btn btn-outline" href="bank-statement-to-tally/privacy.html">Privacy</a></div></article>
+</div></div></section>
+<section class="section alt"><div class="container"><div class="section-head"><h2>User permission comes first</h2><p>Local files and business data are processed for the user-selected function. Account or portal access must be used only by an authorised person.</p></div><div class="grid grid-3"><div class="card"><div class="icon">👤</div><h3>User controlled</h3><p>Users choose their local files, companies and transactions before processing or posting.</p></div><div class="card"><div class="icon">🛡️</div><h3>Limited access</h3><p>Each product requests only the access required for its stated function.</p></div><div class="card"><div class="icon">📞</div><h3>Direct support</h3><p>Support: +91-98299-27177.</p></div></div></div></section>
+<section class="section"><div class="container"><div class="contact"><h2>Need product support?</h2><p>Contact Samriddhi Associates for installation, licensing and authorised software setup.</p><a class="btn btn-gold" href="contact.html">Contact &amp; Support</a></div></div></section>
+<footer class="site-footer"><div class="footer-grid"><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br/><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href="gst-tool/index.html">GST &amp; E-Way Login Tool</a><a href="gmail-sender/index.html">Samriddhi Gmail Sender</a><a href="gst-return-downloader/index.html">GST Return Downloader</a><a href="gstr-2b-reconciliation/index.html">GSTR-2B Reconciliation</a><a href="bank-statement-to-tally/index.html">Bank Statement to Tally</a></div><div><h3>Legal</h3><a href="privacy.html">Website Privacy</a><a href="terms.html">Website Terms</a><a href="contact.html">Contact</a></div></div><div class="footer-bottom">Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer>
+</body></html>
