@@ -1,2 +1,28 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Website terms." name="description"/><title>Website Terms | Samriddhi Associates</title><link href="assets/logo.svg" rel="icon"/><link href="assets/styles.css" rel="stylesheet"/><script defer src="assets/app.js"></script><script defer src="assets/visitor-config.js"></script><script defer src="assets/visitor-counter.js"></script></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img alt="Samriddhi Associates logo" src="assets/logo.svg"/><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#products">Products</a><a href="contact.html">Contact Us</a></nav></div></header><section class="page-hero"><div class="container"><h1>Website Terms</h1><p>General terms for use of this public website.</p></div></section><section class="section"><div class="container content"><div class="policy"><p class="updated"><strong>Last updated:</strong> 20 July 2026</p><p>Users must use this website lawfully and must not interfere with its operation.</p></div><div class="policy"><h2>Product terms</h2><ul><li><a href="gst-tool/terms.html">GST Tool Terms</a></li><li><a href="gmail-sender/terms.html">Gmail Sender Terms</a></li><li><a href="gst-return-downloader/terms.html">GST Return Downloader Terms</a></li><li><a href="gstr-2b-reconciliation/terms.html">GSTR-2B Reconciliation Terms</a></li><li><a href="bank-statement-to-tally/terms.html">Bank Statement to Tally Terms</a></li></ul></div><div class="policy"><h2>Availability</h2><p>Product information may change as features, licensing or third-party requirements change.</p></div></div></section><footer class="site-footer"><div class="footer-grid"><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br/><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href="gst-tool/index.html">GST & E-Way Login Tool</a><a href="gmail-sender/index.html">Samriddhi Gmail Sender</a><a href="gst-return-downloader/index.html">GST Return Downloader</a><a href="gstr-2b-reconciliation/index.html">GSTR-2B Reconciliation</a><a href="bank-statement-to-tally/index.html">Bank Statement to Tally</a><a href="tally-custom-report-builder/index.html">Tally Custom Report Builder</a><a href="debtor-creditor-analysis/index.html">Debtor Creditor Analysis Tool</a></div><div><h3>Legal</h3><a href="privacy.html">Website Privacy</a><a href="terms.html">Website Terms</a><a href="contact.html">Contact</a></div></div><div class="footer-bottom">Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+  <url><loc>https://gstewaylogin.in/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-tool/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gmail-sender/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gst-return-downloader/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/gstr-2b-reconciliation/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/bank-statement-to-tally/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/contact.html</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/tally-custom-report-builder/terms.html</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/privacy.html</loc></url>
+  <url><loc>https://gstewaylogin.in/debtor-creditor-analysis/terms.html</loc></url>
+</urlset>
