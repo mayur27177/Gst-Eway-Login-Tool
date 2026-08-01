@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');if(b&&n)b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',n.classList.contains('open'))}});

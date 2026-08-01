@@ -1,44 +1,150 @@
-SAMRIDDHI ASSOCIATES WEBSITE - VISITOR COUNT SETUP
-===================================================
+/**
+ * Samriddhi Associates Website Contact Form
+ *
+ * Sheet columns:
+ * Name | Mobile | Email | Custom Message
+ */
 
-WHAT WAS UPDATED
-----------------
-1. Homepage ke teen Explore buttons remove kiye gaye.
-2. Top menu ab sirf Home, Products aur Contact Us dikhata hai.
-3. Products click karne par homepage ka complete products section open/scroll hota hai.
-4. Website visitor count same Google Sheet me daily aggregate ke roop me save hoga.
-5. Ek browser ko aam taur par ek din me ek baar count kiya jayega.
-6. Contact form ka existing logic bhi combined Apps Script me included hai.
+const CONTACT_SHEET_NAME = 'Contact Enquiries';
+const CONTACT_HEADERS = ['Name', 'Mobile', 'Email', 'Custom Message'];
 
-GOOGLE SHEET / APPS SCRIPT UPDATE
----------------------------------
-1. Wahi Google Sheet open karein jisme Contact Enquiries save ho rahi hain.
-2. Extensions > Apps Script open karein.
-3. Purana contact-form code replace karke file:
-   Google_Apps_Script_Contact_And_Visitor.gs
-   ka poora code paste karein.
-4. Save karein.
-5. Function dropdown se setupWebsiteSheets select karke Run karein.
-6. Google permission Allow karein.
-7. Sheet me naya tab Website Visitors ban jayega.
-8. Deploy > Manage deployments > existing Web App ke Edit icon par click karein.
-9. Version me New version select karein.
-10. Execute as: Me
-11. Who has access: Anyone
-12. Deploy karein.
+function setupContactSheet() {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
 
-Existing deployment update karne par URL same rahega:
-https://script.google.com/macros/s/AKfycbxGLtIXkWxPfMjocbL2Siel3s4dZPr2QjBpChMO-MCGU4LoX_ZrCYTtzva_k5cWXfaG/exec
+  if (!spreadsheet) {
+    throw new Error(
+      'Open Apps Script from the Google Sheet using Extensions > Apps Script.'
+    );
+  }
 
-VISITOR SHEET
--------------
-Column A: Date
-Column B: Visitors
-Cell E2: Total Visitors
-Cell E3: Last Visit
+  PropertiesService.getScriptProperties().setProperty(
+    'CONTACT_SPREADSHEET_ID',
+    spreadsheet.getId()
+  );
 
-IMPORTANT
----------
-- Counts approximate hain, verified identities nahi.
-- Private/incognito window, storage clear, dusra browser ya dusra device extra count kar sakta hai.
-- Google Sheet visitor name, mobile, email, GSTIN, password, Excel data ya IP address store nahi karti.
+  let sheet = spreadsheet.getSheetByName(CONTACT_SHEET_NAME);
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(CONTACT_SHEET_NAME);
+  }
+
+  sheet.getRange(1, 1, 1, 4).setValues([CONTACT_HEADERS]);
+  sheet.getRange('A1:D1')
+    .setFontWeight('bold')
+    .setBackground('#0d315d')
+    .setFontColor('#ffffff');
+
+  sheet.setFrozenRows(1);
+  sheet.setColumnWidth(1, 190);
+  sheet.setColumnWidth(2, 150);
+  sheet.setColumnWidth(3, 240);
+  sheet.setColumnWidth(4, 450);
+  sheet.getRange('B:B').setNumberFormat('@');
+
+  return 'Contact Sheet setup completed.';
+}
+
+function doPost(e) {
+  try {
+    const params = (e && e.parameter) ? e.parameter : {};
+
+    if (String(params.website || '').trim() !== '') {
+      return responseHtml_('Submission rejected.');
+    }
+
+    const name = cleanText_(params.name, 100);
+    const mobile = cleanMobile_(params.mobile);
+    const email = cleanEmail_(params.email);
+    const customMessage = cleanText_(params.customMessage, 2000);
+
+    if (name.length < 2) throw new Error('Invalid visitor name.');
+    if (!/^\+?[0-9]{7,15}$/.test(mobile)) {
+      throw new Error('Invalid mobile number.');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new Error('Invalid email address.');
+    }
+    if (customMessage.length < 3) throw new Error('Invalid message.');
+
+    const spreadsheetId = PropertiesService
+      .getScriptProperties()
+      .getProperty('CONTACT_SPREADSHEET_ID');
+
+    if (!spreadsheetId) {
+      throw new Error('Run setupContactSheet() before deployment.');
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+    let sheet = spreadsheet.getSheetByName(CONTACT_SHEET_NAME);
+
+    if (!sheet) {
+      sheet = spreadsheet.insertSheet(CONTACT_SHEET_NAME);
+      sheet.getRange(1, 1, 1, 4).setValues([CONTACT_HEADERS]);
+    }
+
+    const nextRow = sheet.getLastRow() + 1;
+    sheet.getRange(nextRow, 1, 1, 4).setValues([[
+      safeSheetValue_(name),
+      safeSheetValue_(mobile),
+      safeSheetValue_(email),
+      safeSheetValue_(customMessage)
+    ]]);
+
+    sheet.getRange(nextRow, 2).setNumberFormat('@');
+    sheet.getRange(nextRow, 4).setWrap(true);
+
+    return responseHtml_('Success');
+  } catch (error) {
+    console.error(error);
+    return responseHtml_('Error');
+  }
+}
+
+function doGet() {
+  return responseHtml_('Samriddhi Associates Contact Form is active.');
+}
+
+function cleanText_(value, maxLength) {
+  return String(value || '')
+    .replace(/\u0000/g, '')
+    .replace(/\r\n/g, '\n')
+    .trim()
+    .slice(0, maxLength);
+}
+
+function cleanMobile_(value) {
+  return String(value || '')
+    .replace(/[^\d+]/g, '')
+    .trim()
+    .slice(0, 16);
+}
+
+function cleanEmail_(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .slice(0, 150);
+}
+
+function safeSheetValue_(value) {
+  const text = String(value || '');
+  return /^[=+\-@]/.test(text) ? "'" + text : text;
+}
+
+function responseHtml_(message) {
+  return HtmlService
+    .createHtmlOutput(
+      '<!doctype html><html><body style="font-family:Arial">' +
+      '<p>' + escapeHtml_(message) + '</p>' +
+      '</body></html>'
+    )
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function escapeHtml_(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
