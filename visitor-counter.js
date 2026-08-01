@@ -1,2 +1,1 @@
-/* Samriddhi Associates website visitor counter endpoint. */
-window.VISITOR_COUNT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwOxMHqyl7f5KQHCQL4WbprLIGH8uMbY3OIc3mHBEi_FhOwV816udylHZElNAqs0AwN/exec";
+document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');if(b&&n)b.onclick=()=>{n.classList.toggle('open');b.setAttribute('aria-expanded',n.classList.contains('open'))}});

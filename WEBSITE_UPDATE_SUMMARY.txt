@@ -1,0 +1,24 @@
+WEBSITE UPDATE SUMMARY — 01 AUGUST 2026
+
+1. GST & E-Way Login Tool — ₹299 One-time
+2. GST Return Downloader — ₹199 One-time
+3. GSTR-2B Reconciliation — ₹499 Yearly
+4. Bulk Gmail Sender — ₹199 One-time
+5. Bank + Sales + Purchase to Tally — ₹1,199 Yearly
+6. Tally Custom Report — ₹399 Yearly
+7. Debtors Analysis Tool — ₹499 Yearly
+
+Completed changes:
+- Seven product cards with visible prices on homepage
+- Current price section on every product page
+- New product pages, privacy policies and terms for Tally Custom Report and Debtors Analysis Tool
+- Bank Statement to Tally renamed to Bank + Sales + Purchase to Tally
+- Old Bank Statement URLs preserved through redirects
+- Refund & Cancellation Policy added
+- Footer, website privacy, website terms and sitemap updated
+- GST Return Downloader page updated for GSTR-2B Excel downloads
+- All local links validated successfully
+
+Pending Cashfree action:
+- Generate Cashfree Payment Form or Payment Button links in Cashfree Dashboard
+- Replace Purchase / Enquire buttons with those Cashfree links

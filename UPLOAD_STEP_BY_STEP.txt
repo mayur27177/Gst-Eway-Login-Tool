@@ -1,41 +1,50 @@
-SAMRIDDHI ASSOCIATES COMPLETE WEBSITE
+SAMRIDDHI ASSOCIATES WEBSITE — 7 PRODUCTS + PRICING UPDATE
+Updated: 01 August 2026
 
-IMPORTANT: Upload the CONTENTS of this folder to the GitHub repository root. Do not upload the ZIP itself and do not upload the outer folder.
+IMPORTANT
+1. Extract the ZIP on your computer.
+2. Upload the CONTENTS of the extracted folder to the GitHub repository root.
+3. Do not upload the ZIP file itself and do not upload an extra outer folder.
+4. Replace existing files when GitHub asks.
+5. Keep the CNAME file unchanged so gstewaylogin.in remains connected.
 
-Expected folders in GitHub root:
-assets
-gst-tool
-gmail-sender
-   gst-return-downloader
+EXPECTED PRODUCT FOLDERS
+- gst-tool
+- gst-return-downloader
+- gstr-2b-reconciliation
+- gmail-sender
+- bank-sales-purchase-to-tally
+- tally-custom-report
+- debtors-analysis-tool
 
-Also upload root files including index.html, CNAME, privacy.html and terms.html.
+COMPATIBILITY FOLDER
+- bank-statement-to-tally
+  This old URL redirects visitors to the renamed Bank + Sales + Purchase to Tally page.
 
-Recommended commit message:
-Replace website with complete Samriddhi design
+IMPORTANT ROOT FILES
+- index.html
+- contact.html
+- privacy.html
+- terms.html
+- refund-cancellation.html
+- sitemap.xml
+- robots.txt
+- CNAME
 
-Test URLs:
+RECOMMENDED COMMIT MESSAGE
+Update 7 products, pricing and Cashfree policy pages
+
+TEST THESE URLS AFTER DEPLOYMENT
 https://gstewaylogin.in/
 https://gstewaylogin.in/gst-tool/
-https://gstewaylogin.in/gmail-sender/
-
-Google Auth URLs - GST Tool:
-Homepage: https://gstewaylogin.in/gst-tool/
-Privacy: https://gstewaylogin.in/gst-tool/privacy.html
-Terms: https://gstewaylogin.in/gst-tool/terms.html
-
-Google Auth URLs - Gmail Sender:
-Homepage: https://gstewaylogin.in/gmail-sender/
-Privacy: https://gstewaylogin.in/gmail-sender/privacy.html
-Terms: https://gstewaylogin.in/gmail-sender/terms.html
-
-
-GST RETURN DOWNLOADER URLS
-
-Product:
 https://gstewaylogin.in/gst-return-downloader/
+https://gstewaylogin.in/gstr-2b-reconciliation/
+https://gstewaylogin.in/gmail-sender/
+https://gstewaylogin.in/bank-sales-purchase-to-tally/
+https://gstewaylogin.in/tally-custom-report/
+https://gstewaylogin.in/debtors-analysis-tool/
+https://gstewaylogin.in/refund-cancellation.html
 
-Privacy:
-https://gstewaylogin.in/gst-return-downloader/privacy.html
-
-Terms:
-https://gstewaylogin.in/gst-return-downloader/terms.html
+CASHFREE NOTE
+Current prices and licence periods are visible on the homepage, each product page, product terms and the refund/cancellation page.
+Cashfree Payment Form/Button URLs are not included because those links must be generated from your Cashfree account. After they are generated, the Purchase / Enquire buttons can be replaced with Cashfree payment buttons.

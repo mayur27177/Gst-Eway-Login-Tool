@@ -1,44 +1,64 @@
-SAMRIDDHI ASSOCIATES WEBSITE - VISITOR COUNT SETUP
-===================================================
+(() => {
+  "use strict";
 
-WHAT WAS UPDATED
-----------------
-1. Homepage ke teen Explore buttons remove kiye gaye.
-2. Top menu ab sirf Home, Products aur Contact Us dikhata hai.
-3. Products click karne par homepage ka complete products section open/scroll hota hai.
-4. Website visitor count same Google Sheet me daily aggregate ke roop me save hoga.
-5. Ek browser ko aam taur par ek din me ek baar count kiya jayega.
-6. Contact form ka existing logic bhi combined Apps Script me included hai.
+  const STORAGE_KEY = "samriddhi_visitor_counted_date_v1";
+  const SOURCE = "samriddhi-site";
 
-GOOGLE SHEET / APPS SCRIPT UPDATE
----------------------------------
-1. Wahi Google Sheet open karein jisme Contact Enquiries save ho rahi hain.
-2. Extensions > Apps Script open karein.
-3. Purana contact-form code replace karke file:
-   Google_Apps_Script_Contact_And_Visitor.gs
-   ka poora code paste karein.
-4. Save karein.
-5. Function dropdown se setupWebsiteSheets select karke Run karein.
-6. Google permission Allow karein.
-7. Sheet me naya tab Website Visitors ban jayega.
-8. Deploy > Manage deployments > existing Web App ke Edit icon par click karein.
-9. Version me New version select karein.
-10. Execute as: Me
-11. Who has access: Anyone
-12. Deploy karein.
+  function indiaDateKey() {
+    try {
+      const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Kolkata",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      return `${map.year}-${map.month}-${map.day}`;
+    } catch (_) {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }
 
-Existing deployment update karne par URL same rahega:
-https://script.google.com/macros/s/AKfycbxGLtIXkWxPfMjocbL2Siel3s4dZPr2QjBpChMO-MCGU4LoX_ZrCYTtzva_k5cWXfaG/exec
+  function isLiveWebsite() {
+    const host = String(window.location.hostname || "").toLowerCase();
+    return host === "gstewaylogin.in" ||
+      host === "www.gstewaylogin.in" ||
+      host.endsWith(".github.io");
+  }
 
-VISITOR SHEET
--------------
-Column A: Date
-Column B: Visitors
-Cell E2: Total Visitors
-Cell E3: Last Visit
+  async function recordVisit() {
+    if (!isLiveWebsite()) return;
 
-IMPORTANT
----------
-- Counts approximate hain, verified identities nahi.
-- Private/incognito window, storage clear, dusra browser ya dusra device extra count kar sakta hai.
-- Google Sheet visitor name, mobile, email, GSTIN, password, Excel data ya IP address store nahi karti.
+    const endpoint = String(window.VISITOR_COUNT_WEB_APP_URL || "").trim();
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(endpoint)) return;
+
+    const today = indiaDateKey();
+    try {
+      if (window.localStorage.getItem(STORAGE_KEY) === today) return;
+      window.localStorage.setItem(STORAGE_KEY, today);
+    } catch (_) {
+      // Continue even if browser storage is unavailable.
+    }
+
+    const requestUrl = new URL(endpoint);
+    requestUrl.searchParams.set("action", "visit");
+    requestUrl.searchParams.set("source", SOURCE);
+
+    try {
+      await fetch(requestUrl.toString(), {
+        method: "GET",
+        mode: "no-cors",
+        cache: "no-store",
+        keepalive: true
+      });
+    } catch (_) {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", recordVisit, { once: true });
+  } else {
+    recordVisit();
+  }
+})();
