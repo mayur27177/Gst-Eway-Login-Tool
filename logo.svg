@@ -1,64 +1,91 @@
-(() => {
-  "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("visitorContactForm");
+  const iframe = document.getElementById("contactSubmitFrame");
+  const statusBox = document.getElementById("contactFormStatus");
+  const submitButton = document.getElementById("contactSubmitButton");
+  const endpoint = String(window.CONTACT_FORM_WEB_APP_URL || "").trim();
 
-  const STORAGE_KEY = "samriddhi_visitor_counted_date_v1";
-  const SOURCE = "samriddhi-site";
+  if (!form || !iframe || !statusBox || !submitButton) return;
 
-  function indiaDateKey() {
-    try {
-      const parts = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Asia/Kolkata",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      }).formatToParts(new Date());
-      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-      return `${map.year}-${map.month}-${map.day}`;
-    } catch (_) {
-      return new Date().toISOString().slice(0, 10);
-    }
-  }
+  let submitted = false;
 
-  function isLiveWebsite() {
-    const host = String(window.location.hostname || "").toLowerCase();
-    return host === "gstewaylogin.in" ||
-      host === "www.gstewaylogin.in" ||
-      host.endsWith(".github.io");
-  }
+  const setStatus = (message, type) => {
+    statusBox.textContent = message;
+    statusBox.className = `form-status ${type || ""}`.trim();
+    statusBox.hidden = false;
+  };
 
-  async function recordVisit() {
-    if (!isLiveWebsite()) return;
+  const normalizeMobile = (value) => value.replace(/[^\d+]/g, "");
 
-    const endpoint = String(window.VISITOR_COUNT_WEB_APP_URL || "").trim();
-    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(endpoint)) return;
+  form.addEventListener("submit", (event) => {
+    const name = form.elements.name.value.trim();
+    const mobile = normalizeMobile(form.elements.mobile.value.trim());
+    const email = form.elements.email.value.trim();
+    const message = form.elements.customMessage.value.trim();
+    const honey = form.elements.website.value.trim();
 
-    const today = indiaDateKey();
-    try {
-      if (window.localStorage.getItem(STORAGE_KEY) === today) return;
-      window.localStorage.setItem(STORAGE_KEY, today);
-    } catch (_) {
-      // Continue even if browser storage is unavailable.
+    form.elements.mobile.value = mobile;
+
+    if (honey) {
+      event.preventDefault();
+      setStatus("Submission could not be processed.", "error");
+      return;
     }
 
-    const requestUrl = new URL(endpoint);
-    requestUrl.searchParams.set("action", "visit");
-    requestUrl.searchParams.set("source", SOURCE);
-
-    try {
-      await fetch(requestUrl.toString(), {
-        method: "GET",
-        mode: "no-cors",
-        cache: "no-store",
-        keepalive: true
-      });
-    } catch (_) {
-      try { window.localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    if (!endpoint || endpoint.includes("PASTE_GOOGLE_APPS_SCRIPT")) {
+      event.preventDefault();
+      setStatus(
+        "Contact form setup is pending. Add the Google Apps Script Web App URL.",
+        "error"
+      );
+      return;
     }
-  }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", recordVisit, { once: true });
-  } else {
-    recordVisit();
-  }
-})();
+    if (name.length < 2 || name.length > 100) {
+      event.preventDefault();
+      setStatus("Please enter a valid Visitor Name.", "error");
+      form.elements.name.focus();
+      return;
+    }
+
+    if (!/^\+?[0-9]{7,15}$/.test(mobile)) {
+      event.preventDefault();
+      setStatus("Please enter a valid Mobile number.", "error");
+      form.elements.mobile.focus();
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      event.preventDefault();
+      setStatus("Please enter a valid Email address.", "error");
+      form.elements.email.focus();
+      return;
+    }
+
+    if (message.length < 3 || message.length > 2000) {
+      event.preventDefault();
+      setStatus("Custom Message must be between 3 and 2000 characters.", "error");
+      form.elements.customMessage.focus();
+      return;
+    }
+
+    form.action = endpoint;
+    submitted = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    setStatus("Submitting your message...", "sending");
+  });
+
+  iframe.addEventListener("load", () => {
+    if (!submitted) return;
+
+    submitted = false;
+    submitButton.disabled = false;
+    submitButton.textContent = "OK — Send Message";
+    form.reset();
+    setStatus(
+      "Thank you. Your message has been submitted successfully.",
+      "success"
+    );
+  });
+});

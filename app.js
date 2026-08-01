@@ -1,4 +1,1 @@
-/*
-Paste the deployed Google Apps Script Web App URL ending in /exec below.
-*/
-window.CONTACT_FORM_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGLtIXkWxPfMjocbL2Siel3s4dZPr2QjBpChMO-MCGU4LoX_ZrCYTtzva_k5cWXfaG/exec";
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g'><stop stop-color='#f4b942'/><stop offset='1' stop-color='#1e67b1'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='white'/><path d='M16 42V22h8l8 12 8-12h8v20h-7V32l-9 13-9-13v10z' fill='url(#g)'/></svg>
