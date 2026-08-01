@@ -1,111 +1,43 @@
-CASHFREE PAYMENT GATEWAY SETUP - STEP BY STEP (HINDI)
-========================================================
+<!DOCTYPE html>
 
-Website: https://gstewaylogin.in/
-Return URL for every form: https://gstewaylogin.in/payment-status.html
-
-IMPORTANT SECURITY
-------------------
-1. Website me Cashfree Client Secret / API Secret kabhi paste nahin karna hai.
-2. Sirf PUBLIC Payment Form URL ko assets/payment-links.js me paste karna hai.
-3. Yearly products ke liye is setup me annual manual renewal hoga. Automatic recurring debit ke liye alag Cashfree Subscriptions integration chahiye.
-
-A. DOMAIN WHITELISTING
-----------------------
-Cashfree Merchant Dashboard > Payment Gateway > Developers > Whitelisting > Add New
-Domain: https://gstewaylogin.in/
-Website par Contact, Terms, Refund & Cancellation, products aur INR pricing already included hain.
-
-B. 7 REUSABLE PAYMENT FORMS BANAYEIN
-------------------------------------
-Dashboard > Payment Forms > All > Create a Payment Form
-
-Har form me:
-- Amount configuration: Single / Fixed amount
-- Currency: INR
-- Customer Name: Required
-- Phone Number: Required
-- Email Address: Required
-- Description me likhein: Email/Gmail ID software licence activation ke liye use hogi.
-- Optional custom fields: Firm Name, GSTIN
-- Invoice: Enable (as applicable)
-- Terms acceptance: Enable
-- Redirect URL: https://gstewaylogin.in/payment-status.html
-- Partial payment: Disable
-
-FORM 1
-Payment For: GST & E-Way Login Tool
-Amount: 299
-Plan text: One-time licence
-Suggested personalised URL/form code: gst-eway-login-tool
-
-FORM 2
-Payment For: GST Return Downloader
-Amount: 199
-Plan text: One-time licence
-Suggested personalised URL/form code: gst-return-downloader
-
-FORM 3
-Payment For: GSTR-2B Reconciliation
-Amount: 499
-Plan text: One-year licence; renewal required after one year
-Suggested personalised URL/form code: gstr-2b-reconciliation
-
-FORM 4
-Payment For: Bulk Gmail Sender
-Amount: 199
-Plan text: One-time licence
-Suggested personalised URL/form code: bulk-gmail-sender
-
-FORM 5
-Payment For: Bank + Sales + Purchase to Tally
-Amount: 1199
-Plan text: One-year licence; renewal required after one year
-Suggested personalised URL/form code: bank-sales-purchase-tally
-
-FORM 6
-Payment For: Tally Custom Report
-Amount: 399
-Plan text: One-year licence; renewal required after one year
-Suggested personalised URL/form code: tally-custom-report
-
-FORM 7
-Payment For: Debtors Analysis Tool
-Amount: 499
-Plan text: One-year licence; renewal required after one year
-Suggested personalised URL/form code: debtors-analysis-tool
-
-C. PUBLIC FORM URLS WEBSITE ME PASTE KAREIN
-------------------------------------------
-File open karein: assets/payment-links.js
-
-Example:
-  gst_eway_login: "https://payments.cashfree.com/forms/gst-eway-login-tool",
-
-Isi tarah saat public form URLs paste karein. Quotes aur comma ko delete na karein.
-
-D. BUY NOW BUTTON BEHAVIOUR
----------------------------
-- Form URL configured hai: Buy Now directly Cashfree hosted checkout kholega.
-- Form URL blank hai: Buy Now safely Contact page par jayega.
-- Card/UPI details website par collect nahin hoti.
-
-E. TESTING
-----------
-1. Pehle Cashfree form preview/test karein.
-2. Website par har Buy Now button open karke product name aur amount verify karein.
-3. Return URL payment-status.html par aa raha hai ya nahin verify karein.
-4. Live payment ke baad Cashfree Dashboard me final status SUCCESS verify karke hi licence activate karein.
-5. Automatic licence activation baad me webhook + secure backend ke through add ki ja sakti hai.
-
-F. CURRENT ACTIVATED PUBLIC PAYMENT FORM URLS
---------------------------------------------
-1. GST & E-Way Login Tool: https://payments.cashfree.com/forms/gst-eway-login-299
-2. GST Return Downloader: https://payments.cashfree.com/forms/gst-return-downloader-199
-3. GSTR-2B Reconciliation: https://payments.cashfree.com/forms/gstr-2b-reconciliation-499
-4. Bulk Gmail Sender: https://payments.cashfree.com/forms/bulk-gmail-sender-199
-5. Bank + Sales + Purchase to Tally: https://payments.cashfree.com/forms/bank-sales-purchase-tally-1199
-6. Tally Custom Report: https://payments.cashfree.com/forms/tally-custom-report-399
-7. Debtors Analysis Tool: https://payments.cashfree.com/forms/debtors-analysis-tool-499
-
-These seven links are already configured in assets/payment-links.js in this final package.
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Terms of Service for GST Return Downloader desktop software." name="description"/><title>Terms | GST Return Downloader</title><link href="../assets/logo.svg" rel="icon"/><link href="../assets/styles.css" rel="stylesheet"/><script defer="" src="../assets/app.js"></script><script defer="" src="../assets/visitor-config.js"></script><script defer="" src="../assets/visitor-counter.js"></script></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="../index.html"><img alt="Samriddhi Associates logo" src="../assets/logo.svg"/><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="../index.html">Home</a><a class="active" href="../index.html#products">Products</a><a href="../contact.html">Contact Us</a></nav></div></header>
+<section class="page-hero"><div class="container">
+<h1>GST Return Downloader Terms of Service</h1>
+<p>Terms for authorised portal access, return downloads and licensed software use.</p>
+</div></section>
+<section class="section"><div class="container content">
+<div class="policy"><p class="updated"><strong>Last updated:</strong> 16 July 2026</p><p>By installing or using GST Return Downloader, the user agrees to these terms.</p></div><div class="policy current-plan-policy"><h2>Current licence plan</h2><p><strong>₹199 — One-time</strong>. One-time plans do not require yearly licence renewal; yearly plans require renewal after the applicable licence period.</p><p>See the <a href="../refund-cancellation.html">Refund &amp; Cancellation Policy</a>.</p></div>
+<div class="policy"><h2>1. Authorised use</h2>
+<p>The software may be used only with GST accounts that the user owns, manages professionally or is otherwise lawfully authorised to access.</p></div>
+<div class="policy"><h2>2. User responsibilities</h2>
+<ul>
+<li>Maintain accurate client credentials and return-period instructions</li>
+<li>Protect GST passwords and downloaded return documents</li>
+<li>Complete CAPTCHA, OTP or other portal verification when required</li>
+<li>Review downloaded files and confirm that the correct client and period were processed</li>
+<li>Comply with GST law, professional obligations and client confidentiality requirements</li>
+</ul></div>
+<div class="policy"><h2>3. Prohibited use</h2>
+<ul>
+<li>Unauthorised access to another person's GST account</li>
+<li>Credential theft, impersonation or circumvention of GST Portal security</li>
+<li>Automated activity intended to overload or disrupt the GST Portal</li>
+<li>Resale, copying, reverse engineering or redistribution without written permission</li>
+<li>Tampering with licence, device-validation or security controls</li>
+</ul></div>
+<div class="policy"><h2>4. Third-party portal dependency</h2>
+<p>The application depends on the GST Portal, browser behaviour and internet connectivity. Portal layouts, availability, security checks and download options are controlled by the government portal and may change without notice.</p></div>
+<div class="policy"><h2>5. Software licence</h2>
+<p>Subject to payment and activation conditions, the user receives a limited, non-exclusive and non-transferable right to use the software on the authorised installation or device. The licence may be suspended where the status is inactive, the device is unauthorised or the software is misused.</p></div>
+<div class="policy"><h2>6. Downloads and professional review</h2>
+<p>The software assists with downloading available GST return PDF or Excel files. It does not verify the correctness of GST returns, replace professional review or guarantee that a document is available for every requested period.</p></div>
+<div class="policy"><h2>7. Updates and compatibility</h2>
+<p>Updates may be required when the GST Portal, browser or operating system changes. Some portal changes may temporarily affect automation until the application is updated.</p></div>
+<div class="policy"><h2>8. Disclaimer</h2>
+<p>The application is provided on an “as available” basis. Samriddhi Associates does not guarantee uninterrupted GST Portal access, successful download of every return or freedom from third-party portal errors.</p></div>
+<div class="policy"><h2>9. Limitation of liability</h2>
+<p>To the extent permitted by law, Samriddhi Associates is not responsible for loss caused by incorrect credentials, unauthorised use, portal downtime, wrong client data, deleted files, account restrictions or failure to review downloaded documents.</p></div>
+<div class="policy"><h2>10. Contact</h2>
+<p><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div>
+</div></section>
+<footer class="site-footer"><div class="footer-grid"><div><h3>Samriddhi Associates</h3><p>Practical software tools for GST professionals, businesses and authorised users.</p><p><strong>Contact:</strong><br/><strong>Samriddhi Associates</strong><br/>8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801<br/>Cell : +91-98299-27177</p></div><div><h3>Products</h3><a href="../gst-tool/index.html">GST &amp; E-Way Login Tool</a><a href="../gst-return-downloader/index.html">GST Return Downloader</a><a href="../gstr-2b-reconciliation/index.html">GSTR-2B Reconciliation</a><a href="../gmail-sender/index.html">Bulk Gmail Sender</a><a href="../bank-sales-purchase-to-tally/index.html">Bank + Sales + Purchase to Tally</a><a href="../tally-custom-report/index.html">Tally Custom Report</a><a href="../debtors-analysis-tool/index.html">Debtors Analysis Tool</a></div><div><h3>Legal</h3><a href="../privacy.html">Website Privacy</a><a href="../terms.html">Website Terms</a><a href="../refund-cancellation.html">Refund &amp; Cancellation</a><a href="../contact.html">Contact</a></div></div><div class="footer-bottom">Developed by Samriddhi Associates, 8, Basement Floor, Okay Plus Complex, Near Bus Stand, Kishangarh, Ajmer - 305801 Cell : +91-98299-27177</div></footer></body></html>
