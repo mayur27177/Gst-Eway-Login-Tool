@@ -22,7 +22,7 @@ window.SAMRIDDHI_PRODUCTS = Object.freeze({
     billing: "One-time",
     note: "Windows desktop licence. Key is emailed after verified payment.",
     downloadUrl:
-      "https://drive.google.com/file/d/1xVsYMLo4ZnA-n6peV4ELjImRVLZyZ9kn/view?usp=sharing",
+      "https://drive.google.com/uc?export=download&id=1xVsYMLo4ZnA-n6peV4ELjImRVLZyZ9kn",
     downloadLabel: "Download"
   },
   "gstr-2b-reconciliation-499": {
@@ -33,7 +33,7 @@ window.SAMRIDDHI_PRODUCTS = Object.freeze({
     billing: "Yearly",
     note: "Yearly licence. Key is emailed after verified payment.",
     downloadUrl:
-      "https://drive.google.com/file/d/1QF7q4XrQ8EP2w1pSV_zQjGwOy9VlXb-t/view?usp=sharing",
+      "https://drive.google.com/uc?export=download&id=1QF7q4XrQ8EP2w1pSV_zQjGwOy9VlXb-t",
     downloadLabel: "Download"
   },
   "bulk-gmail-sender-199": {
@@ -54,7 +54,7 @@ window.SAMRIDDHI_PRODUCTS = Object.freeze({
     billing: "Yearly",
     note: "Yearly licence. Key is emailed after verified payment.",
     downloadUrl:
-      "https://drive.google.com/file/d/1lc0yShHR5Wyae16joSjHbVt1IAJ8GTCG/view?usp=sharing",
+      "https://drive.google.com/uc?export=download&id=1lc0yShHR5Wyae16joSjHbVt1IAJ8GTCG",
     downloadLabel: "Download"
   },
   "tally-custom-report-399": {
@@ -65,7 +65,7 @@ window.SAMRIDDHI_PRODUCTS = Object.freeze({
     billing: "Yearly",
     note: "Yearly licence. Key is emailed after verified payment.",
     downloadUrl:
-      "https://drive.google.com/file/d/19TBcjnGABPk5-KDKODiWp501TG1PEGgm/view?usp=sharing",
+      "https://drive.google.com/uc?export=download&id=19TBcjnGABPk5-KDKODiWp501TG1PEGgm",
     downloadLabel: "Download"
   },
   "debtors-analysis-tool-499": {
@@ -76,7 +76,7 @@ window.SAMRIDDHI_PRODUCTS = Object.freeze({
     billing: "Yearly",
     note: "Yearly licence. Key is emailed after verified payment.",
     downloadUrl:
-      "https://drive.google.com/file/d/1AAf5fadv8mYtCvJUlvmtXjIJq5N6kf1g/view?usp=sharing",
+      "https://drive.google.com/uc?export=download&id=1AAf5fadv8mYtCvJUlvmtXjIJq5N6kf1g",
     downloadLabel: "Download"
   }
 });
