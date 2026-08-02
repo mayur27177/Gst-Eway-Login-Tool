@@ -1,17 +1,1 @@
-CASHFREE PAYMENT SETUP - FINAL DIRECT LINK VERSION
-
-All seven Buy Now buttons contain direct public Cashfree Payment Form URLs in the HTML.
-No JavaScript replacement is required.
-No Cashfree API key or secret is stored in the website.
-
-Configured products:
-1. GST & E-Way Login Tool - Rs. 299 One-time
-2. GST Return Downloader - Rs. 199 One-time
-3. GSTR-2B Reconciliation - Rs. 499 Yearly
-4. Bulk Gmail Sender - Rs. 199 One-time
-5. Bank + Sales + Purchase to Tally - Rs. 1,199 Yearly
-6. Tally Custom Report - Rs. 399 Yearly
-7. Debtors Analysis Tool - Rs. 499 Yearly
-
-Upload every file and folder from this package to the GitHub repository root.
-After deployment, hard-refresh the website with Ctrl+F5 and test each Buy Now button.
+gstewaylogin.in
