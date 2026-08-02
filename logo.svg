@@ -1,91 +1,175 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("visitorContactForm");
-  const iframe = document.getElementById("contactSubmitFrame");
-  const statusBox = document.getElementById("contactFormStatus");
-  const submitButton = document.getElementById("contactSubmitButton");
-  const endpoint = String(window.CONTACT_FORM_WEB_APP_URL || "").trim();
+(() => {
+  'use strict';
 
-  if (!form || !iframe || !statusBox || !submitButton) return;
-
-  let submitted = false;
-
-  const setStatus = (message, type) => {
-    statusBox.textContent = message;
-    statusBox.className = `form-status ${type || ""}`.trim();
-    statusBox.hidden = false;
-  };
-
-  const normalizeMobile = (value) => value.replace(/[^\d+]/g, "");
-
-  form.addEventListener("submit", (event) => {
-    const name = form.elements.name.value.trim();
-    const mobile = normalizeMobile(form.elements.mobile.value.trim());
-    const email = form.elements.email.value.trim();
-    const message = form.elements.customMessage.value.trim();
-    const honey = form.elements.website.value.trim();
-
-    form.elements.mobile.value = mobile;
-
-    if (honey) {
-      event.preventDefault();
-      setStatus("Submission could not be processed.", "error");
-      return;
+  const WORKER_ORIGIN = 'https://cashfree-license-webhook.mayurgupta9829927177.workers.dev';
+  const PRODUCTS = Object.freeze({
+    'gst-eway-login-299': {
+      name: 'GST & E-Way Login Tool', amount: 299, billing: 'One-time',
+      note: 'One-time licence for one authorised installation.'
+    },
+    'gst-return-downloader-199': {
+      name: 'GST Return Downloader', amount: 199, billing: 'One-time',
+      note: 'One-time licence for the GST Return Downloader desktop application.'
+    },
+    'gstr-2b-reconciliation-499': {
+      name: 'GSTR-2B Reconciliation', amount: 499, billing: 'Yearly',
+      note: 'Yearly licence for the GSTR-2B reconciliation desktop application.'
+    },
+    'bank-sales-purchase-tally-1199': {
+      name: 'Bank + Sales + Purchase to Tally', amount: 1199, billing: 'Yearly',
+      note: 'Yearly licence for authorised Bank, Sales and Purchase to Tally workflows.'
+    },
+    'tally-custom-report-399': {
+      name: 'Tally Custom Report', amount: 399, billing: 'Yearly',
+      note: 'Yearly licence for the configured Tally custom report.'
+    },
+    'debtors-analysis-tool-499': {
+      name: 'Debtors Analysis Tool', amount: 499, billing: 'Yearly',
+      note: 'Yearly licence for the Debtors Analysis Tool.'
     }
+  });
 
-    if (!endpoint || endpoint.includes("PASTE_GOOGLE_APPS_SCRIPT")) {
-      event.preventDefault();
-      setStatus(
-        "Contact form setup is pending. Add the Google Apps Script Web App URL.",
-        "error"
-      );
-      return;
-    }
+  const form = document.getElementById('checkout-form');
+  if (!form) return;
 
-    if (name.length < 2 || name.length > 100) {
-      event.preventDefault();
-      setStatus("Please enter a valid Visitor Name.", "error");
-      form.elements.name.focus();
-      return;
-    }
+  const params = new URLSearchParams(window.location.search);
+  const productCode = String(params.get('product') || '').trim();
+  const product = PRODUCTS[productCode];
+  const nameInput = document.getElementById('customer-name');
+  const mobileInput = document.getElementById('customer-mobile');
+  const emailInput = document.getElementById('customer-email');
+  const consentInput = document.getElementById('checkout-consent');
+  const submitButton = document.getElementById('checkout-submit');
+  const submitLabel = submitButton.querySelector('.submit-label');
+  const spinner = submitButton.querySelector('.submit-spinner');
+  const statusBox = document.getElementById('checkout-status');
 
-    if (!/^\+?[0-9]{7,15}$/.test(mobile)) {
-      event.preventDefault();
-      setStatus("Please enter a valid Mobile number.", "error");
-      form.elements.mobile.focus();
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      event.preventDefault();
-      setStatus("Please enter a valid Email address.", "error");
-      form.elements.email.focus();
-      return;
-    }
-
-    if (message.length < 3 || message.length > 2000) {
-      event.preventDefault();
-      setStatus("Custom Message must be between 3 and 2000 characters.", "error");
-      form.elements.customMessage.focus();
-      return;
-    }
-
-    form.action = endpoint;
-    submitted = true;
+  if (!product) {
+    document.getElementById('checkout-product-name').textContent = 'Product not available';
+    document.getElementById('checkout-price').textContent = '—';
+    document.getElementById('checkout-billing').textContent = 'Unavailable';
+    document.getElementById('checkout-product-note').textContent = 'Please return to the Products page and select Buy Now again.';
+    setStatus('This product is not enabled for automated checkout.', 'error');
     submitButton.disabled = true;
-    submitButton.textContent = "Sending...";
-    setStatus("Submitting your message...", "sending");
+    return;
+  }
+
+  document.title = `${product.name} Checkout | Samriddhi Associates`;
+  document.getElementById('checkout-product-name').textContent = product.name;
+  document.getElementById('checkout-price').textContent = formatRupees(product.amount);
+  document.getElementById('checkout-billing').textContent = product.billing;
+  document.getElementById('checkout-product-note').textContent = product.note;
+  submitLabel.textContent = `Pay ${formatRupees(product.amount)}`;
+
+  mobileInput.addEventListener('input', () => {
+    mobileInput.value = mobileInput.value.replace(/\D/g, '').slice(0, 10);
+    clearFieldError('customer-mobile');
+  });
+  [nameInput, emailInput].forEach((input) => input.addEventListener('input', () => clearFieldError(input.id)));
+  consentInput.addEventListener('change', () => clearFieldError('checkout-consent'));
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearAllErrors();
+    hideStatus();
+
+    const customerName = nameInput.value.trim().replace(/\s+/g, ' ');
+    const customerPhone = mobileInput.value.replace(/\D/g, '');
+    const customerEmail = emailInput.value.trim().toLowerCase();
+
+    let firstInvalid = null;
+    if (customerName.length < 2) firstInvalid = setFieldError('customer-name', 'Enter a valid customer name.') || firstInvalid;
+    if (!/^[6-9]\d{9}$/.test(customerPhone)) firstInvalid = setFieldError('customer-mobile', 'Enter a valid 10-digit Indian mobile number.') || firstInvalid;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) firstInvalid = setFieldError('customer-email', 'Enter a valid email address.') || firstInvalid;
+    if (!consentInput.checked) firstInvalid = setFieldError('checkout-consent', 'Please accept the terms before continuing.') || firstInvalid;
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return;
+    }
+
+    setBusy(true);
+    setStatus('Creating your secure Cashfree order…', 'sending');
+
+    try {
+      const response = await fetch(`${WORKER_ORIGIN}/create-order`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          product_code: productCode,
+          customer_name: customerName,
+          customer_phone: customerPhone,
+          customer_email: customerEmail
+        })
+      });
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok || !result?.payment_session_id) {
+        throw new Error(result?.error || 'Unable to create the payment order. Please try again.');
+      }
+
+      sessionStorage.setItem('samriddhi_last_order_id', result.order_id || '');
+      sessionStorage.setItem('samriddhi_last_product', product.name);
+      setStatus('Opening Cashfree secure checkout…', 'success');
+
+      if (typeof window.Cashfree !== 'function') {
+        throw new Error('Cashfree checkout could not load. Please refresh the page and try again.');
+      }
+
+      const cashfree = window.Cashfree({ mode: 'production' });
+      const checkoutResult = await cashfree.checkout({
+        paymentSessionId: result.payment_session_id,
+        redirectTarget: '_self'
+      });
+
+      if (checkoutResult?.error) {
+        throw new Error(checkoutResult.error.message || 'Cashfree checkout could not be opened.');
+      }
+    } catch (error) {
+      console.error('Checkout failed', error);
+      setBusy(false);
+      setStatus(error instanceof Error ? error.message : 'Checkout failed. Please try again.', 'error');
+    }
   });
 
-  iframe.addEventListener("load", () => {
-    if (!submitted) return;
+  function formatRupees(amount) {
+    return `₹${Number(amount).toLocaleString('en-IN')}`;
+  }
 
-    submitted = false;
-    submitButton.disabled = false;
-    submitButton.textContent = "OK — Send Message";
-    form.reset();
-    setStatus(
-      "Thank you. Your message has been submitted successfully.",
-      "success"
-    );
-  });
-});
+  function setBusy(busy) {
+    submitButton.disabled = busy;
+    spinner.hidden = !busy;
+    submitLabel.textContent = busy ? 'Please wait…' : `Pay ${formatRupees(product.amount)}`;
+  }
+
+  function setStatus(message, type) {
+    statusBox.hidden = false;
+    statusBox.className = `checkout-status ${type || ''}`.trim();
+    statusBox.textContent = message;
+  }
+
+  function hideStatus() {
+    statusBox.hidden = true;
+    statusBox.textContent = '';
+    statusBox.className = 'checkout-status';
+  }
+
+  function setFieldError(id, message) {
+    const input = document.getElementById(id);
+    const error = document.querySelector(`[data-error-for="${id}"]`);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) error.textContent = message;
+    return input;
+  }
+
+  function clearFieldError(id) {
+    const input = document.getElementById(id);
+    const error = document.querySelector(`[data-error-for="${id}"]`);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) error.textContent = '';
+  }
+
+  function clearAllErrors() {
+    ['customer-name', 'customer-mobile', 'customer-email', 'checkout-consent'].forEach(clearFieldError);
+  }
+})();
