@@ -68,17 +68,30 @@ document.addEventListener("DOMContentLoaded", () => {
       const status = String(data.order_status || data.status || "").toUpperCase();
 
       if (status === "PAID") {
+        if (data.license_emailed) {
+          render(
+            "Payment Successful",
+            "Thank you. Your payment is verified.",
+            "Your licence key has been emailed to " +
+              (data.customer_email || "your registered email") +
+              ". Please also check Spam/Promotions. Order: " +
+              orderId,
+            "success"
+          );
+          return;
+        }
+
+        const err = String(data.license_error || (data.license_result && data.license_result.error) || "").trim();
         render(
-          "Payment Successful",
-          "Thank you. Your payment is verified.",
-          data.license_emailed
-            ? "Your licence key has been emailed to " +
-                (data.customer_email || "your registered email") +
-                ". Please also check Spam/Promotions."
-            : "Your licence key is being emailed to " +
-                (data.customer_email || "your registered email") +
-                ". If it does not arrive in a few minutes, contact +91-98299-27177.",
-          "success"
+          "Payment Successful — licence pending",
+          "Payment is verified, but licence allotment/email is not confirmed.",
+          (err ? "Error: " + err + " · " : "") +
+            "Email: " +
+            (data.customer_email || "—") +
+            " · Order: " +
+            orderId +
+            " · Please contact support with this Order ID.",
+          "error"
         );
         return;
       }
@@ -87,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         render(
           "Payment not completed",
           "This order was not paid successfully.",
-          "You can return to the product page and try Buy Now again. Order: " + orderId,
+          "Order: " + orderId,
           "error"
         );
         return;
