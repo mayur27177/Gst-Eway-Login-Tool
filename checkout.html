@@ -14,6 +14,19 @@
 <script defer src="assets/checkout.js"></script>
 <script defer src="assets/visitor-config.js"></script>
 <script defer src="assets/visitor-counter.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (!window.SAMRIDDHI_PRODUCTS || !window.CHECKOUT_WORKER_ORIGIN) {
+    var status = document.getElementById("checkout-status");
+    if (status) {
+      status.hidden = false;
+      status.className = "checkout-status error";
+      status.textContent =
+        "Checkout scripts failed to load. Please upload assets/products.js, assets/checkout-config.js and assets/checkout.js to GitHub.";
+    }
+  }
+});
+</script>
 </head>
 <body>
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img alt="Samriddhi Associates logo" src="assets/logo.svg"><span>Samriddhi Associates</span></a><button aria-label="Menu" class="nav-toggle">☰</button><nav class="nav-links"><a href="index.html">Home</a><a class="active" href="index.html#products">Products</a><a href="contact.html">Contact Us</a></nav></div></header>
@@ -35,7 +48,7 @@
   <main class="card checkout-form-card">
     <h2>Billing and licence details</h2>
     <p class="checkout-muted">Fields marked with * are required.</p>
-    <form id="checkout-form" novalidate>
+    <form id="checkout-form" method="post" action="#" novalidate>
       <div class="form-group">
         <label for="customer-name">Customer Name <span>*</span></label>
         <input id="customer-name" name="customer_name" type="text" autocomplete="name" maxlength="100" placeholder="Enter full name" required>
