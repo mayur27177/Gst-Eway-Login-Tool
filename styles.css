@@ -1,39 +1,62 @@
-(function () {
-  "use strict";
-
-  function isConfiguredCashfreeUrl(value) {
-    if (!value || typeof value !== "string") return false;
-    try {
-      const url = new URL(value.trim());
-      if (url.protocol !== "https:") return false;
-      const host = url.hostname.toLowerCase();
-      return host === "payments.cashfree.com" || host.endsWith(".cashfree.com") || host === "cf.pay";
-    } catch (_) {
-      return false;
-    }
+/**
+ * Shared product catalogue for checkout.
+ * Amounts must match Cashfree / advertised prices.
+ */
+window.SAMRIDDHI_PRODUCTS = Object.freeze({
+  "gst-eway-login-299": {
+    id: "gst_eway_login",
+    code: "gst-eway-login-299",
+    name: "GST & E-Way Login Tool",
+    amount: 299,
+    billing: "One-time",
+    note: "Chrome extension licence. Key is emailed after verified payment."
+  },
+  "gst-return-downloader-199": {
+    id: "gst_return_downloader",
+    code: "gst-return-downloader-199",
+    name: "GST Return Downloader",
+    amount: 199,
+    billing: "One-time",
+    note: "Windows desktop licence. Key is emailed after verified payment."
+  },
+  "gstr-2b-reconciliation-499": {
+    id: "gstr_2b_reconciliation",
+    code: "gstr-2b-reconciliation-499",
+    name: "GSTR-2B Reconciliation",
+    amount: 499,
+    billing: "Yearly",
+    note: "Yearly licence. Key is emailed after verified payment."
+  },
+  "bulk-gmail-sender-199": {
+    id: "bulk_gmail_sender",
+    code: "bulk-gmail-sender-199",
+    name: "Bulk Gmail Sender",
+    amount: 199,
+    billing: "One-time",
+    note: "Windows desktop licence. Key is emailed after verified payment."
+  },
+  "bank-sales-purchase-tally-1199": {
+    id: "bank_sales_purchase_to_tally",
+    code: "bank-sales-purchase-tally-1199",
+    name: "Bank + Sales + Purchase to Tally",
+    amount: 1199,
+    billing: "Yearly",
+    note: "Yearly licence. Key is emailed after verified payment."
+  },
+  "tally-custom-report-399": {
+    id: "tally_custom_report",
+    code: "tally-custom-report-399",
+    name: "Tally Custom Report",
+    amount: 399,
+    billing: "Yearly",
+    note: "Yearly licence. Key is emailed after verified payment."
+  },
+  "debtors-analysis-tool-499": {
+    id: "debtors_analysis_tool",
+    code: "debtors-analysis-tool-499",
+    name: "Debtors Analysis Tool",
+    amount: 499,
+    billing: "Yearly",
+    note: "Yearly licence. Key is emailed after verified payment."
   }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const links = window.CASHFREE_PAYMENT_LINKS || {};
-    document.querySelectorAll("[data-payment-product]").forEach(function (button) {
-      const productKey = button.getAttribute("data-payment-product");
-      const paymentUrl = links[productKey];
-      const contactUrl = button.getAttribute("data-contact-url") || "contact.html";
-
-      if (isConfiguredCashfreeUrl(paymentUrl)) {
-        button.href = paymentUrl.trim();
-        button.target = "_self";
-        button.rel = "noopener";
-        button.classList.remove("payment-pending");
-        button.setAttribute("aria-label", "Buy now using Cashfree secure checkout");
-        button.title = "Pay securely using Cashfree";
-      } else {
-        // Safe fallback until the public Cashfree form URL is pasted in payment-links.js.
-        button.href = contactUrl;
-        button.classList.add("payment-pending");
-        button.setAttribute("aria-label", "Contact Samriddhi Associates to purchase");
-        button.title = "Cashfree checkout activation pending — contact us to purchase";
-      }
-    });
-  });
-})();
+});
