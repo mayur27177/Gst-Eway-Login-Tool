@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const messageEl = document.getElementById("payment-status-message");
   const detailEl = document.getElementById("payment-status-detail");
   const cardEl = document.getElementById("payment-status-card");
+  const downloadBtn = document.getElementById("payment-download-btn");
+
+  const showDownloadFor = (productCode) => {
+    if (!downloadBtn) return;
+    const catalogue = window.SAMRIDDHI_PRODUCTS || {};
+    const product = catalogue[productCode] || null;
+    const url = product && product.downloadUrl ? String(product.downloadUrl).trim() : "";
+    if (!url) {
+      downloadBtn.hidden = true;
+      return;
+    }
+    downloadBtn.href = url;
+    downloadBtn.textContent = product.downloadLabel || "Download";
+    downloadBtn.hidden = false;
+  };
 
   const render = (title, message, detail, type) => {
     if (titleEl) titleEl.textContent = title;
@@ -68,7 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const status = String(data.order_status || data.status || "").toUpperCase();
 
       if (status === "PAID") {
+        const productCode =
+          (data.license_result && data.license_result.product_code) || "";
         if (data.license_emailed) {
+          showDownloadFor(productCode);
           render(
             "Payment Successful",
             "Thank you. Your payment is verified.",
@@ -81,7 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        const err = String(data.license_error || (data.license_result && data.license_result.error) || "").trim();
+        const err = String(
+          data.license_error ||
+            (data.license_result && data.license_result.error) ||
+            ""
+        ).trim();
         render(
           "Payment Successful — licence pending",
           "Payment is verified, but licence allotment/email is not confirmed.",
